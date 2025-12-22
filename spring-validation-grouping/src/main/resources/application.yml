@@ -1,0 +1,10 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: spring-boot-first
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    locale: en_US # Built-in error details are displayed in English
+    locale-resolver: fixed

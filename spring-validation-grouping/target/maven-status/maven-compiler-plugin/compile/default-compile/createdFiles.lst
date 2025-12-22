@@ -1,0 +1,10 @@
+org\codeart\validation\dto\JobInfo.class
+org\codeart\validation\groups\Create.class
+org\codeart\validation\dto\ParamError.class
+org\codeart\validation\groups\Update.class
+org\codeart\validation\dto\R.class
+org\codeart\validation\dto\UserDTO$UserDTOBuilder.class
+org\codeart\validation\controller\UserController.class
+org\codeart\validation\exception\GlobalExceptionHandler.class
+org\codeart\validation\SpringValidationGroupsApplication.class
+org\codeart\validation\dto\UserDTO.class
