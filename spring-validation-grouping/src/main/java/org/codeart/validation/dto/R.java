@@ -43,7 +43,7 @@ public class R<T> {
     }
 
     public static <T> R<T> ok(T data) {
-        return ok(ERROR_CODE, SUCCESS, data);
+        return ok(NORMAL_CODE, SUCCESS, data);
     }
 
     public static <T> R<T> fail(Integer code, String msg) {

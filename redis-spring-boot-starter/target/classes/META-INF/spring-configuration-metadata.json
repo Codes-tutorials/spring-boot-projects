@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "spring.redis",
+      "type": "org.codeart.redis.config.LettuceProperties",
+      "sourceType": "org.codeart.redis.config.LettuceProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.redis.database",
+      "type": "java.lang.Integer",
+      "sourceType": "org.codeart.redis.config.LettuceProperties"
+    },
+    {
+      "name": "spring.redis.host",
+      "type": "java.lang.String",
+      "sourceType": "org.codeart.redis.config.LettuceProperties"
+    },
+    {
+      "name": "spring.redis.port",
+      "type": "java.lang.Integer",
+      "sourceType": "org.codeart.redis.config.LettuceProperties"
+    },
+    {
+      "name": "spring.redis.ssl",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.codeart.redis.config.LettuceProperties"
+    },
+    {
+      "name": "spring.redis.timeout",
+      "type": "java.lang.Long",
+      "sourceType": "org.codeart.redis.config.LettuceProperties"
+    }
+  ],
+  "hints": []
+}
