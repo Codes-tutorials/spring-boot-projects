@@ -1,0 +1,19 @@
+# Redis Lua Profile - Sliding Window Rate Limiting
+spring:
+  config:
+    activate:
+      on-profile: redis-lua
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+
+# Use Redis Lua script for rate limiting (sliding window)
+rate-limit:
+  storage-type: redis-lua
+
+logging:
+  level:
+    org.codeart.ratelimit: DEBUG

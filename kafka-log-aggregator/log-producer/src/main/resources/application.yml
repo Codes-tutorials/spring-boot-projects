@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: ${SERVICE_NAME:log-producer}
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        # Enable idempotence for exactly-once semantics
+        enable.idempotence: true
+        # Max in-flight requests for ordering guarantee
+        max.in.flight.requests.per.connection: 5
+        # Batch settings for throughput
+        batch.size: 16384
+        linger.ms: 5
+        # Compression for efficiency
+        compression.type: lz4
+        # Custom partitioner
+        partitioner.class: org.codeart.kafka.producer.config.ServiceNamePartitioner
+
+server:
+  port: ${SERVER_PORT:8081}
+
+# Log producer configuration
+log-producer:
+  # Instance ID for multi-instance deployments
+  instance-id: ${INSTANCE_ID:${random.uuid}}
+  # Environment (dev, staging, prod)
+  environment: ${ENVIRONMENT:dev}
+  # Enable async sending
+  async-send: true
+  # Topic configuration
+  topics:
+    system-logs: system-logs
+    error-logs: error-logs
+  # Minimum log level to send to Kafka
+  min-level: INFO
+
+# Actuator configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,kafka
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+      instance: ${log-producer.instance-id}
+
+# Logging
+logging:
+  level:
+    org.codeart.kafka: DEBUG
+    org.apache.kafka: WARN

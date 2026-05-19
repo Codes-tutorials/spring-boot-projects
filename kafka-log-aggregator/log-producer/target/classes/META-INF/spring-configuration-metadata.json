@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "log-producer",
+      "type": "org.codeart.kafka.producer.config.LogProducerProperties",
+      "sourceType": "org.codeart.kafka.producer.config.LogProducerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "log-producer.async-send",
+      "type": "java.lang.Boolean",
+      "description": "Enable asynchronous sending",
+      "sourceType": "org.codeart.kafka.producer.config.LogProducerProperties"
+    },
+    {
+      "name": "log-producer.environment",
+      "type": "java.lang.String",
+      "description": "Environment name (dev, staging, prod)",
+      "sourceType": "org.codeart.kafka.producer.config.LogProducerProperties"
+    },
+    {
+      "name": "log-producer.instance-id",
+      "type": "java.lang.String",
+      "description": "Unique instance identifier for multi-instance deployments",
+      "sourceType": "org.codeart.kafka.producer.config.LogProducerProperties"
+    },
+    {
+      "name": "log-producer.min-level",
+      "type": "java.lang.String",
+      "description": "Minimum log level to send (TRACE, DEBUG, INFO, WARN, ERROR)",
+      "sourceType": "org.codeart.kafka.producer.config.LogProducerProperties"
+    },
+    {
+      "name": "log-producer.topics",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Topic configuration",
+      "sourceType": "org.codeart.kafka.producer.config.LogProducerProperties"
+    }
+  ],
+  "hints": []
+}

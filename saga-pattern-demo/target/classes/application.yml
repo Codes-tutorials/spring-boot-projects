@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: saga-pattern-demo
+  
+  # H2 Database
+  datasource:
+    url: jdbc:h2:mem:sagadb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# SAGA Configuration
+saga:
+  timeout:
+    order: 30s
+    payment: 10s
+    inventory: 10s
+    shipping: 10s
+  retry:
+    max-attempts: 3
+    delay: 1s
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+# Logging
+logging:
+  level:
+    org.codeart.saga: DEBUG
+    org.springframework.transaction: DEBUG
+
+# Springdoc
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,80 @@
+{
+  "groups": [
+    {
+      "name": "cache",
+      "type": "org.codeart.cache.config.CacheProperties",
+      "sourceType": "org.codeart.cache.config.CacheProperties"
+    },
+    {
+      "name": "cache.caffeine",
+      "type": "org.codeart.cache.config.CacheProperties$Caffeine",
+      "sourceType": "org.codeart.cache.config.CacheProperties",
+      "sourceMethod": "public org.codeart.cache.config.CacheProperties.Caffeine getCaffeine() "
+    },
+    {
+      "name": "cache.multi-level",
+      "type": "org.codeart.cache.config.CacheProperties$MultiLevel",
+      "sourceType": "org.codeart.cache.config.CacheProperties",
+      "sourceMethod": "public org.codeart.cache.config.CacheProperties.MultiLevel getMultiLevel() "
+    },
+    {
+      "name": "cache.redis",
+      "type": "org.codeart.cache.config.CacheProperties$Redis",
+      "sourceType": "org.codeart.cache.config.CacheProperties",
+      "sourceMethod": "public org.codeart.cache.config.CacheProperties.Redis getRedis() "
+    },
+    {
+      "name": "cache.write-behind",
+      "type": "org.codeart.cache.config.CacheProperties$WriteBehind",
+      "sourceType": "org.codeart.cache.config.CacheProperties",
+      "sourceMethod": "public org.codeart.cache.config.CacheProperties.WriteBehind getWriteBehind() "
+    }
+  ],
+  "properties": [
+    {
+      "name": "cache.caffeine.default-spec",
+      "type": "java.lang.String",
+      "description": "Default Caffeine spec for caches",
+      "sourceType": "org.codeart.cache.config.CacheProperties$Caffeine"
+    },
+    {
+      "name": "cache.caffeine.specs",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Per-cache Caffeine specs",
+      "sourceType": "org.codeart.cache.config.CacheProperties$Caffeine"
+    },
+    {
+      "name": "cache.multi-level.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.codeart.cache.config.CacheProperties$MultiLevel"
+    },
+    {
+      "name": "cache.redis.default-ttl",
+      "type": "java.lang.Long",
+      "description": "Default TTL in seconds",
+      "sourceType": "org.codeart.cache.config.CacheProperties$Redis"
+    },
+    {
+      "name": "cache.redis.ttls",
+      "type": "java.util.Map<java.lang.String,java.lang.Long>",
+      "description": "Per-cache TTLs in seconds",
+      "sourceType": "org.codeart.cache.config.CacheProperties$Redis"
+    },
+    {
+      "name": "cache.write-behind.batch-size",
+      "type": "java.lang.Integer",
+      "sourceType": "org.codeart.cache.config.CacheProperties$WriteBehind"
+    },
+    {
+      "name": "cache.write-behind.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.codeart.cache.config.CacheProperties$WriteBehind"
+    },
+    {
+      "name": "cache.write-behind.flush-interval-ms",
+      "type": "java.lang.Long",
+      "sourceType": "org.codeart.cache.config.CacheProperties$WriteBehind"
+    }
+  ],
+  "hints": []
+}

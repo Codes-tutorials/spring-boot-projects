@@ -1,0 +1,42 @@
+{
+  "groups": [
+    {
+      "name": "log-consumer",
+      "type": "org.codeart.kafka.consumer.config.LogConsumerProperties",
+      "sourceType": "org.codeart.kafka.consumer.config.LogConsumerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "log-consumer.batch-size",
+      "type": "java.lang.Integer",
+      "description": "Batch size for processing",
+      "sourceType": "org.codeart.kafka.consumer.config.LogConsumerProperties"
+    },
+    {
+      "name": "log-consumer.dead-letter-enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable dead letter topic for failed messages",
+      "sourceType": "org.codeart.kafka.consumer.config.LogConsumerProperties"
+    },
+    {
+      "name": "log-consumer.instance-id",
+      "type": "java.lang.String",
+      "description": "Unique instance identifier",
+      "sourceType": "org.codeart.kafka.consumer.config.LogConsumerProperties"
+    },
+    {
+      "name": "log-consumer.max-retries",
+      "type": "java.lang.Integer",
+      "description": "Maximum retries before sending to DLT",
+      "sourceType": "org.codeart.kafka.consumer.config.LogConsumerProperties"
+    },
+    {
+      "name": "log-consumer.persistence",
+      "type": "java.lang.String",
+      "description": "Persistence mode: console, file, elasticsearch",
+      "sourceType": "org.codeart.kafka.consumer.config.LogConsumerProperties"
+    }
+  ],
+  "hints": []
+}

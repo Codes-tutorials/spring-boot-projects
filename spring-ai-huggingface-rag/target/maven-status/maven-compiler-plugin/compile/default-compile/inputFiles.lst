@@ -1,0 +1,10 @@
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\config\AiConfig.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\controller\ChatController.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\controller\DocumentController.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\model\ChatRequest.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\model\ChatResponse.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\model\DocumentResponse.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\service\DocumentIngestionService.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\service\EmbeddingService.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\service\RagService.java
+D:\anitgravity\spring-boot-projects\spring-ai-huggingface-rag\src\main\java\org\codeart\ai\SpringAiRagApplication.java

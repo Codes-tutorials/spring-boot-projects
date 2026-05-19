@@ -1,0 +1,9 @@
+org\codeart\kafka\producer\service\LogProducerService.class
+org\codeart\kafka\producer\config\ServiceNamePartitioner.class
+org\codeart\kafka\producer\controller\LogController$LogRequest.class
+org\codeart\kafka\producer\controller\LogController.class
+META-INF\spring-configuration-metadata.json
+org\codeart\kafka\producer\config\KafkaProducerConfig.class
+org\codeart\kafka\producer\config\LogProducerProperties.class
+org\codeart\kafka\producer\LogProducerApplication.class
+org\codeart\kafka\producer\controller\LogController$ErrorRequest.class

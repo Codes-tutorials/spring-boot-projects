@@ -1,0 +1,13 @@
+# Local Development Profile - In-Memory Rate Limiting
+spring:
+  config:
+    activate:
+      on-profile: local
+
+# Disable Redis for local development (uses in-memory buckets)
+rate-limit:
+  storage-type: in-memory
+
+logging:
+  level:
+    org.codeart.ratelimit: DEBUG

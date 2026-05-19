@@ -1,0 +1,89 @@
+spring:
+  application:
+    name: rate-limiting-demo
+  profiles:
+    active: local
+
+# Server Configuration
+server:
+  port: 8080
+
+# Actuator & Metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,ratelimiters
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+
+# OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+# Resilience4j Rate Limiter Configuration
+resilience4j:
+  ratelimiter:
+    configs:
+      default:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 100
+      strict:
+        limitForPeriod: 5
+        limitRefreshPeriod: 1m
+        timeoutDuration: 0
+      relaxed:
+        limitForPeriod: 100
+        limitRefreshPeriod: 1m
+        timeoutDuration: 500ms
+    instances:
+      backendA:
+        baseConfig: strict
+      backendB:
+        baseConfig: relaxed
+      userService:
+        limitForPeriod: 20
+        limitRefreshPeriod: 1m
+        timeoutDuration: 0
+
+# Custom Rate Limit Configuration
+rate-limit:
+  enabled: true
+  default-limit: 60
+  default-duration: 1m
+  tiers:
+    free:
+      requests-per-minute: 10
+      burst-capacity: 15
+    basic:
+      requests-per-minute: 100
+      burst-capacity: 150
+    premium:
+      requests-per-minute: 1000
+      burst-capacity: 1500
+  # API Key to Tier mapping (for demo purposes)
+  api-keys:
+    free-key-001: free
+    free-key-002: free
+    basic-key-001: basic
+    basic-key-002: basic
+    premium-key-001: premium
+    premium-key-002: premium
+
+# Logging
+logging:
+  level:
+    org.codeart.ratelimit: DEBUG
+    io.github.bucket4j: DEBUG
+    io.github.resilience4j: DEBUG

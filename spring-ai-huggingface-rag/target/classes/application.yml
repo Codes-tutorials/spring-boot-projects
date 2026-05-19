@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: spring-ai-huggingface-rag
+
+  # PostgreSQL Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ragdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  # Spring AI Configuration
+  ai:
+    huggingface:
+      api-key: ${HUGGINGFACE_API_KEY:your-api-key-here}
+      chat:
+        options:
+          model: mistralai/Mistral-7B-Instruct-v0.3
+          temperature: 0.7
+          max-tokens: 1024
+      embedding:
+        options:
+          model: sentence-transformers/all-MiniLM-L6-v2
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 384
+        initialize-schema: true
+
+# Document Processing Configuration
+app:
+  document:
+    chunk-size: 1000
+    chunk-overlap: 200
+    upload-dir: ${java.io.tmpdir}/rag-uploads
+
+# Server Configuration
+server:
+  port: 8080
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# Logging
+logging:
+  level:
+    org.codeart.ai: DEBUG
+    org.springframework.ai: DEBUG

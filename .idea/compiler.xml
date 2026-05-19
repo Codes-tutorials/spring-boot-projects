@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="log-producer" />
+        <module name="log-model" />
+        <module name="spring-validation-grouping" />
+        <module name="rate-limiting-demo" />
+        <module name="log-consumer" />
+        <module name="cqrs-pattern-demo" />
+        <module name="spring-ai-huggingface-rag" />
+        <module name="redis-spring-boot-starter" />
+        <module name="jwt-auth-demo" />
+        <module name="multi-level-cache-demo" />
+        <module name="redis-starter-test" />
+        <module name="saga-pattern-demo" />
+        <module name="rate-limiter-service" />
+        <module name="circuit-breaker-demo" />
+        <module name="spring-session-clustering" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="circuit-breaker-demo" options="-parameters" />
+      <module name="cqrs-pattern-demo" options="-parameters" />
+      <module name="jwt-auth-demo" options="-parameters" />
+      <module name="log-consumer" options="-parameters" />
+      <module name="log-model" options="-parameters" />
+      <module name="log-producer" options="-parameters" />
+      <module name="multi-level-cache-demo" options="-parameters" />
+      <module name="rate-limiter-service" options="-parameters" />
+      <module name="rate-limiting-demo" options="-parameters" />
+      <module name="redis-starter-test" options="-parameters" />
+      <module name="saga-pattern-demo" options="-parameters" />
+      <module name="spring-ai-huggingface-rag" options="-parameters" />
+      <module name="spring-session-clustering" options="-parameters" />
+      <module name="spring-validation-grouping" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cqrs-pattern-demo
+  
+  # H2 Database (separate for read/write in production)
+  datasource:
+    url: jdbc:h2:mem:cqrsdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# CQRS Configuration
+cqrs:
+  sync:
+    mode: sync  # sync or async
+    delay-ms: 0
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+# Logging
+logging:
+  level:
+    org.codeart.cqrs: DEBUG
+
+# Springdoc
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

@@ -1,0 +1,6 @@
+org\codeart\kafka\model\LogEvent$ExceptionInfo.class
+org\codeart\kafka\model\LogEvent$LogEventBuilder.class
+org\codeart\kafka\model\LogEvent.class
+org\codeart\kafka\model\KafkaTopics.class
+org\codeart\kafka\model\LogEvent$ExceptionInfo$ExceptionInfoBuilder.class
+org\codeart\kafka\model\LogLevel.class

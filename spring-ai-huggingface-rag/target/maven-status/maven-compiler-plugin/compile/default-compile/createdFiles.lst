@@ -1,0 +1,17 @@
+org\codeart\ai\config\AiConfig.class
+org\codeart\ai\service\RagService.class
+org\codeart\ai\controller\DocumentController.class
+org\codeart\ai\service\DocumentIngestionService.class
+org\codeart\ai\model\ChatResponse$SourceDocument.class
+org\codeart\ai\model\DocumentResponse.class
+org\codeart\ai\model\ChatResponse$RagMetadata$RagMetadataBuilder.class
+org\codeart\ai\model\ChatResponse$ChatResponseBuilder.class
+org\codeart\ai\service\EmbeddingService.class
+org\codeart\ai\controller\ChatController.class
+org\codeart\ai\model\ChatResponse$RagMetadata.class
+org\codeart\ai\model\ChatResponse$SourceDocument$SourceDocumentBuilder.class
+org\codeart\ai\model\DocumentResponse$DocumentResponseBuilder.class
+org\codeart\ai\model\ChatRequest$ChatRequestBuilder.class
+org\codeart\ai\SpringAiRagApplication.class
+org\codeart\ai\model\ChatRequest.class
+org\codeart\ai\model\ChatResponse.class

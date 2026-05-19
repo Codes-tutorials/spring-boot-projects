@@ -1,0 +1,101 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: multi-level-cache-demo
+
+  # H2 Database (for demo)
+  datasource:
+    url: jdbc:h2:mem:cachedb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Redis Configuration
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+          min-idle: 2
+
+# Cache Configuration
+cache:
+  # Enable multi-level caching
+  multi-level:
+    enabled: true
+  
+  # L1 Cache (Caffeine - Local)
+  caffeine:
+    # Default spec for caches
+    default-spec: maximumSize=1000,expireAfterWrite=60s
+    # Per-cache specs
+    specs:
+      products: maximumSize=500,expireAfterWrite=120s
+      users: maximumSize=200,expireAfterWrite=300s
+      config: maximumSize=50,expireAfterWrite=600s
+  
+  # L2 Cache (Redis - Distributed)
+  redis:
+    # Default TTL in seconds
+    default-ttl: 300
+    # Per-cache TTLs
+    ttls:
+      products: 600
+      users: 1800
+      config: 3600
+  
+  # Write-behind configuration
+  write-behind:
+    enabled: true
+    batch-size: 50
+    flush-interval-ms: 5000
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,caches
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+
+# Logging
+logging:
+  level:
+    org.codeart.cache: DEBUG
+    org.springframework.cache: DEBUG
+    io.lettuce: WARN
+
+# Springdoc
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

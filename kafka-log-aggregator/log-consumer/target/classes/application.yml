@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: ${SERVICE_NAME:log-consumer}
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: ${CONSUMER_GROUP:log-aggregator-group}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "org.codeart.kafka.model"
+        spring.json.value.default.type: org.codeart.kafka.model.LogEvent
+        # Fetch settings for batching
+        fetch.min.bytes: 1024
+        fetch.max.wait.ms: 500
+        max.poll.records: 100
+    listener:
+      # Concurrency: number of consumer threads per instance
+      concurrency: ${KAFKA_CONCURRENCY:3}
+      # Acknowledgment mode
+      ack-mode: batch
+      # Batch listener
+      type: batch
+
+server:
+  port: ${SERVER_PORT:8082}
+
+# Consumer configuration
+log-consumer:
+  # Instance ID for identification
+  instance-id: ${INSTANCE_ID:${random.uuid}}
+  # Enable dead letter topic
+  dead-letter-enabled: true
+  # Max retries before sending to DLT
+  max-retries: 3
+  # Batch size for processing
+  batch-size: 50
+  # Log persistence mode: console, file, elasticsearch
+  persistence: console
+
+# Actuator configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,kafka
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
+      instance: ${log-consumer.instance-id}
+
+# Logging
+logging:
+  level:
+    org.codeart.kafka: DEBUG
+    org.apache.kafka: WARN

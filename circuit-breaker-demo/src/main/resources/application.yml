@@ -1,0 +1,144 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: circuit-breaker-demo
+
+# Resilience4j Configuration
+resilience4j:
+  # Circuit Breaker Configuration
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        slowCallRateThreshold: 100
+        slowCallDurationThreshold: 2s
+        eventConsumerBufferSize: 10
+      strict:
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 30
+        waitDurationInOpenState: 30s
+    instances:
+      paymentService:
+        baseConfig: default
+      orderService:
+        baseConfig: default
+        failureRateThreshold: 40
+      inventoryService:
+        baseConfig: strict
+      externalApi:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+
+  # Retry Configuration
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 500ms
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - java.io.IOException
+          - java.net.SocketTimeoutException
+          - org.springframework.web.client.ResourceAccessException
+        ignoreExceptions:
+          - org.codeart.circuitbreaker.exception.BusinessException
+    instances:
+      paymentService:
+        baseConfig: default
+      externalApi:
+        maxAttempts: 5
+        waitDuration: 1s
+
+  # Rate Limiter Configuration
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 10
+        limitRefreshPeriod: 1s
+        timeoutDuration: 500ms
+        registerHealthIndicator: true
+    instances:
+      paymentService:
+        limitForPeriod: 5
+        limitRefreshPeriod: 1s
+      externalApi:
+        limitForPeriod: 20
+        limitRefreshPeriod: 1s
+
+  # Bulkhead Configuration (Thread Isolation)
+  bulkhead:
+    configs:
+      default:
+        maxConcurrentCalls: 10
+        maxWaitDuration: 100ms
+    instances:
+      paymentService:
+        maxConcurrentCalls: 5
+      orderService:
+        maxConcurrentCalls: 10
+
+  # Time Limiter Configuration
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3s
+        cancelRunningFuture: true
+    instances:
+      paymentService:
+        timeoutDuration: 2s
+      externalApi:
+        timeoutDuration: 5s
+
+# External Service URLs (simulated)
+external:
+  services:
+    payment:
+      url: http://localhost:8081/api/payment
+      timeout: 3s
+    order:
+      url: http://localhost:8082/api/order
+      timeout: 3s
+    inventory:
+      url: http://localhost:8083/api/inventory
+      timeout: 2s
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,circuitbreakers,circuitbreakerevents,ratelimiters,retries,bulkheads
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
+
+# Logging
+logging:
+  level:
+    org.codeart.circuitbreaker: DEBUG
+    io.github.resilience4j: DEBUG
+
+# Springdoc
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

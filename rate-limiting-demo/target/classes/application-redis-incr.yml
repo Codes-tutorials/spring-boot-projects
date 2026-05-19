@@ -1,0 +1,19 @@
+# Redis INCR Profile - Fixed Window Rate Limiting
+spring:
+  config:
+    activate:
+      on-profile: redis-incr
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+
+# Use Redis INCR for rate limiting (no Bucket4j)
+rate-limit:
+  storage-type: redis-incr
+
+logging:
+  level:
+    org.codeart.ratelimit: DEBUG

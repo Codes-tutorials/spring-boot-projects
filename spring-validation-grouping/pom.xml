@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.12.RELEASE</version>
+        <version>4.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.codeart</groupId>
@@ -14,7 +14,7 @@
     <name>spring-validation-grouping</name>
     <description>Spring Validation Grouping Demo</description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>25</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -24,7 +24,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
             <optional>true</optional>
         </dependency>
         <dependency>

@@ -1,0 +1,15 @@
+org\codeart\circuitbreaker\config\OpenApiConfig.class
+org\codeart\circuitbreaker\service\CircuitBreakerMonitorService$CircuitBreakerStatus.class
+org\codeart\circuitbreaker\client\ExternalPaymentClient.class
+org\codeart\circuitbreaker\service\PaymentService$PaymentResult$PaymentResultBuilder.class
+org\codeart\circuitbreaker\service\PaymentService.class
+org\codeart\circuitbreaker\CircuitBreakerDemoApplication.class
+org\codeart\circuitbreaker\service\PaymentService$PaymentResult.class
+org\codeart\circuitbreaker\controller\PaymentController.class
+org\codeart\circuitbreaker\service\CircuitBreakerMonitorService$CircuitBreakerStatus$CircuitBreakerStatusBuilder.class
+org\codeart\circuitbreaker\exception\ServiceUnavailableException.class
+org\codeart\circuitbreaker\client\ExternalPaymentClient$ClientConfig.class
+org\codeart\circuitbreaker\exception\BusinessException.class
+org\codeart\circuitbreaker\controller\DemoController.class
+org\codeart\circuitbreaker\controller\CircuitBreakerAdminController.class
+org\codeart\circuitbreaker\service\CircuitBreakerMonitorService.class

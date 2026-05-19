@@ -1,0 +1,5 @@
+org\codeart\kafka\consumer\LogConsumerApplication.class
+org\codeart\kafka\consumer\config\LogConsumerProperties.class
+META-INF\spring-configuration-metadata.json
+org\codeart\kafka\consumer\config\KafkaConsumerConfig.class
+org\codeart\kafka\consumer\service\LogConsumerService.class

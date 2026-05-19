@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/jwt-auth-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/cqrs-pattern-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/saga-pattern-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/rate-limiting-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/redis-starter-test/pom.xml" />
+        <option value="$PROJECT_DIR$/circuit-breaker-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/kafka-log-aggregator/pom.xml" />
+        <option value="$PROJECT_DIR$/rate-limiter-service/pom.xml" />
+        <option value="$PROJECT_DIR$/multi-level-cache-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/redis-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-ai-huggingface-rag/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-session-clustering/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-validation-grouping/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="22" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
